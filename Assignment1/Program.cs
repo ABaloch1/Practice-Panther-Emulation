@@ -9,9 +9,34 @@ namespace Assignment1
         static void Main(string[] args)
         {
             List<Client> clientList = new List<Client>();
-            ClientMenu(clientList);
             List<Project> projectList = new List<Project>();
-            ProjectMenu(projectList, clientList);
+
+            while(true)
+            {
+                Console.WriteLine("Welcome to program! :) \n"  +
+                    "A. ClientMenu \n" +
+                    "B. ProjectMenu \n" +
+                    "Q. Exit Program \n");
+
+                var choice = Console.ReadLine();
+                if (choice.Equals("A", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ClientMenu(clientList);
+                }
+                else if(choice.Equals("B", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ProjectMenu(projectList, clientList);
+                }
+                else if (choice.Equals("Q", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input");
+                }
+            }
+
 
         }
         //private List<Project> projects = new List<Project>();
@@ -67,15 +92,37 @@ namespace Assignment1
                 //read
                 else if (choice.Equals("R", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    clientList.ForEach(Console.WriteLine);
+                    foreach (var client in clientList)
+                    {
+                    //clientList.ForEach(Console.WriteLine);
+                    //Console.WriteLine("test");
+                    Console.WriteLine("Id:" +client.Id);
+                    Console.WriteLine("OpenDate:" + client.OpenDate);
+                    Console.WriteLine("ClosedDate:" + client.ClosedDate);
+                    Console.WriteLine("IsActive:" + client.IsActive);
+                    Console.WriteLine("Name:" + client.Name);
+                    Console.WriteLine("Notes:" + client.Notes + "\n");
+                    
+                    }
                 }
 
                 //update
                 else if (choice.Equals("U", StringComparison.InvariantCultureIgnoreCase))
                 {
                     Console.WriteLine("Which client would you like to update? Please enter their ID number");
-                    clientList.ForEach(Console.WriteLine);
-                    //reading in Id variable to fine
+                    //clientList.ForEach(Console.WriteLine);
+                    foreach (var client in clientList)
+                    {
+                        
+                        Console.WriteLine("Id:" + client.Id);
+                        Console.WriteLine("OpenDate:" + client.OpenDate);
+                        Console.WriteLine("ClosedDate:" + client.ClosedDate);
+                        Console.WriteLine("IsActive:" + client.IsActive);
+                        Console.WriteLine("Name:" + client.Name);
+                        Console.WriteLine("Notes:" + client.Notes + "\n");
+
+                    }
+                    //reading in Id variable to find
                     var update = int.Parse(Console.ReadLine() ?? "0");
                     //finding client to update
                     var clientUpdate = clientList.FirstOrDefault(c => c.Id == update);
@@ -87,7 +134,7 @@ namespace Assignment1
                         clientUpdate.OpenDate = DateTime.Parse(Console.ReadLine() ?? DateTime.Today.ToString());
 
                         Console.WriteLine("What is the clients new CloseDate");
-                        clientUpdate.OpenDate = DateTime.Parse(Console.ReadLine() ?? DateTime.Today.ToString());
+                        clientUpdate.ClosedDate = DateTime.Parse(Console.ReadLine() ?? DateTime.Today.ToString());
 
                         Console.WriteLine("Is the client still active? yes or no");
                         var ac = Console.ReadLine();
@@ -112,7 +159,16 @@ namespace Assignment1
                 else if (choice.Equals("D", StringComparison.InvariantCultureIgnoreCase))
                 {
                     Console.WriteLine("Please enter the ID of which client you would like to delete?");
-                    clientList.ForEach(Console.WriteLine);
+                    foreach (var client in clientList)
+                    {
+                        Console.WriteLine("Id:" + client.Id);
+                        Console.WriteLine("OpenDate:" + client.OpenDate);
+                        Console.WriteLine("ClosedDate:" + client.ClosedDate);
+                        Console.WriteLine("IsActive:" + client.IsActive);
+                        Console.WriteLine("Name:" + client.Name);
+                        Console.WriteLine("Notes:" + client.Notes + "\n");
+
+                    }
                     var delete = int.Parse(Console.ReadLine() ?? "0");
 
                     var clientDelete = clientList.FirstOrDefault(c => c.Id == delete);
@@ -188,24 +244,49 @@ namespace Assignment1
                     }
                     else
                     {
-                        Console.WriteLine("w");
+                        projectList.Add(
+                       new Project
+                       {
+                           Id = id,
+                           OpenDate = open,
+                           ClosedDate = close,
+                           IsActive = active,
+                           ShortName = shortname ?? "John/Jane Doe",
+                           LongName = longname ?? "John/Jane Doe",
+                       });
                     }
-
-
-                   
                 }
 
                 //read
                 else if (choice.Equals("R", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    projectList.ForEach(Console.WriteLine);
+                    foreach (var project in projectList)
+                    {
+                        Console.WriteLine("Id:" + project.Id);
+                        Console.WriteLine("OpenDate:" + project.OpenDate);
+                        Console.WriteLine("ClosedDate:" + project.ClosedDate);
+                        Console.WriteLine("IsActive:" + project.IsActive);
+                        Console.WriteLine("ShortName:" + project.ShortName);
+                        Console.WriteLine("LongName:" + project.LongName);
+                        Console.WriteLine("ClientId:" + project.ClientId + "\n");
+
+                    }
                 }
 
                 //update
-                else if (choice.Equals("U", StringComparison.InvariantCultureIgnoreCase))
+               else if (choice.Equals("U", StringComparison.InvariantCultureIgnoreCase))
                 {
                     Console.WriteLine("Which project would you like to update? ");
-                    projectList.ForEach(Console.WriteLine);
+                    foreach (var project in projectList)
+                    {
+                        Console.WriteLine("Id:" + project.Id);
+                        Console.WriteLine("OpenDate:" + project.OpenDate);
+                        Console.WriteLine("ClosedDate:" + project.ClosedDate);
+                        Console.WriteLine("IsActive:" + project.IsActive);
+                        Console.WriteLine("ShortName:" + project.ShortName);
+                        Console.WriteLine("LongName:" + project.LongName);
+                        Console.WriteLine("ClientId:" + project.ClientId + "\n");
+                    }
                     var update = int.Parse(Console.ReadLine() ?? "0");
 
                     var projectUpdate = projectList.FirstOrDefault(x => x.Id == update);
@@ -217,7 +298,7 @@ namespace Assignment1
                         Console.WriteLine("What is the clients new CloseDate");
                         projectUpdate.ClosedDate = DateTime.Parse(Console.ReadLine() ?? DateTime.Today.ToString());
 
-                        Console.WriteLine("Is the client still active? yes or no");
+                        Console.WriteLine("Is the project still active? yes or no");
                         var ac = Console.ReadLine();
 
                         if (ac.Equals("no", StringComparison.InvariantCultureIgnoreCase))
@@ -235,15 +316,34 @@ namespace Assignment1
                         Console.WriteLine("What is projects new longname?");
                         projectUpdate.LongName = Console.ReadLine() ?? "John/Jane Doe";
 
-                        Console.WriteLine("What is the client ID with the project? ");
-                        projectUpdate.ClientId = int.Parse(Console.ReadLine() ?? "0");
+                        Console.WriteLine("Would you like to Update the client ID? Yes or No");
+                        var select = Console.ReadLine(); 
+
+                        if (select.Equals( "yes", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            Console.WriteLine("What is the new Clients ID?");
+                            var clientid = int.Parse(Console.ReadLine() ?? "0");
+                            var selectedClient = clientList.FirstOrDefault(x => x.Id == clientid);
+                            projectUpdate.ClientId = selectedClient.Id;
+                        }
+                      
+
                     }
                 }
                 //delete
                 else if (choice.Equals("D", StringComparison.InvariantCultureIgnoreCase))
                 {
                     Console.WriteLine("Please enter the ID of the project you want to delete ");
-                    projectList.ForEach(Console.WriteLine);
+                    foreach (var project in projectList)
+                    {
+                        Console.WriteLine("Id:" + project.Id);
+                        Console.WriteLine("OpenDate:" + project.OpenDate);
+                        Console.WriteLine("ClosedDate:" + project.ClosedDate);
+                        Console.WriteLine("IsActive:" + project.IsActive);
+                        Console.WriteLine("ShortName:" + project.ShortName);
+                        Console.WriteLine("LongName:" + project.LongName);
+                        Console.WriteLine("ClientId:" + project.ClientId + "\n");
+                    }
                     var delete = int.Parse(Console.ReadLine() ?? "0");
 
                     var projectDelete = projectList.FirstOrDefault(x => x.Id == delete);

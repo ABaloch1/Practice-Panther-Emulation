@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Project.MAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Project.MAUI"
+    xmlns:local2="clr-namespace:Project.MAUI.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+    <ShellContent
+        Title="Practice Panther"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+    <ShellContent
+        Title="Client Managment"
+        ContentTemplate="{DataTemplate local2:ClientView}"
+        Route="getclientList" />
+</Shell>

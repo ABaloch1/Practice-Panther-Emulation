@@ -18,7 +18,9 @@ namespace Assignment1
                     "B. ProjectMenu \n" +
                     "Q. Exit Program \n");
 
-                var choice = Console.ReadLine();
+
+                //might break something
+                var choice = Console.ReadLine() ?? string.Empty;
                 if (choice.Equals("A", StringComparison.InvariantCultureIgnoreCase))
                 {
                     ClientMenu(clientList);

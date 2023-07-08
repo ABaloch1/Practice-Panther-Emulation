@@ -4,25 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment1.Models
+namespace Project_library.Models
 {
-    public class Client
+    public class Project
     {
-       
         public int Id { get; set; }
         public DateTime OpenDate { get; set; }
         public DateTime ClosedDate { get; set; }
         public bool IsActive { get; set; }
-        public string Name { get; set; }
-        public string Notes { get; set; }
-
-        /*
-        public override string ToString()
-        {
-            //return base.ToString();
-            return $"{Id} {Name} {Notes}";
-        }
-        */
-
+        public string ShortName { get; set; }
+        public string LongName { get; set; }
+        public int ClientId { get; set; }
     }
 }

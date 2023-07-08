@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment1.Models
+namespace Project_library.Models
 {
     public class Client
     {
@@ -15,14 +15,22 @@ namespace Assignment1.Models
         public bool IsActive { get; set; }
         public string Name { get; set; }
         public string Notes { get; set; }
+        public List<Project> Projects { get; set; }
+        
+        public string Display
+        {
+            get
+            {
+                return ToString();
+            }
+        }
 
-        /*
         public override string ToString()
         {
             //return base.ToString();
             return $"{Id} {Name} {Notes}";
         }
-        */
+        
 
     }
 }

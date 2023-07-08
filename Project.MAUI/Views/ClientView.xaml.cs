@@ -9,4 +9,9 @@ public partial class ClientView : ContentPage
 		InitializeComponent();
 		BindingContext = new ClientViewModel();
 	}
+
+    private void PreviousClicked(object sender, EventArgs e)
+    {
+		Shell.Current.GoToAsync("//MainPage");
+    }
 }

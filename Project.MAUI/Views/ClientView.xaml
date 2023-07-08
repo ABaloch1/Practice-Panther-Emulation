@@ -11,11 +11,12 @@
                 <DataTemplate>
                     <ViewCell>
                         <Grid>
-                            <Label Text="{Binding Path=Display}"/>
+                            <Label Grid.Column="0 " Text="{Binding Path=Display}"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Text="Previous Page" Clicked="PreviousClicked"/>
     </VerticalStackLayout>
 </ContentPage>

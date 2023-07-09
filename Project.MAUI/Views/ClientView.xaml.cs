@@ -14,4 +14,10 @@ public partial class ClientView : ContentPage
     {
 		Shell.Current.GoToAsync("//MainPage");
     }
+
+
+    private void Delete(object sender, EventArgs e)
+    {
+        (BindingContext as ClientViewModel).Delete();
+    }
 }

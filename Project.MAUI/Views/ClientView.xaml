@@ -6,6 +6,7 @@
     <VerticalStackLayout>
         <ListView
             ItemsSource="{Binding Path = Clients}"
+            SelectedItem="{Binding Path=  SelectedClient}"
             >
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -17,6 +18,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Text="Delete" Clicked="Delete"/>
         <Button Text="Previous Page" Clicked="PreviousClicked"/>
     </VerticalStackLayout>
 </ContentPage>

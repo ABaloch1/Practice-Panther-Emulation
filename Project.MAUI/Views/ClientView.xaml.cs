@@ -7,7 +7,7 @@ public partial class ClientView : ContentPage
 	public ClientView()
 	{
 		InitializeComponent();
-		BindingContext = new ClientViewModel();
+		BindingContext = new ClientViewViewModel();
 	}
 
     private void PreviousClicked(object sender, EventArgs e)
@@ -16,8 +16,13 @@ public partial class ClientView : ContentPage
     }
 
 
-    private void Delete(object sender, EventArgs e)
+    private void DeleteClicked(object sender, EventArgs e)
     {
-        (BindingContext as ClientViewModel).Delete();
+        (BindingContext as ClientViewViewModel).RefreshClientList();
+    }
+
+    private void OnArrived(object sender, NavigatedToEventArgs e)
+    {
+        (BindingContext as ClientViewViewModel).RefreshClientList();
     }
 }

@@ -2,23 +2,33 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Project.MAUI.Views.ClientView"
-             Title="ClientView">
+             Title="ClientView"
+             NavigatedTo="OnArrived">
     <VerticalStackLayout>
         <ListView
-            ItemsSource="{Binding Path = Clients}"
+            ItemsSource="{Binding Path = getclientList}"
             SelectedItem="{Binding Path=  SelectedClient}"
             >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="12*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
                             <Label Grid.Column="0 " Text="{Binding Path=Display}"/>
+                            <Button Grid.Column="1"
+                                    Text="Delete"
+                                    Command="{Binding Path = DeleteCommand}"
+                                    CommandParameter="{Binding}"
+                                    Clicked="DeleteClicked"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Text="Delete" Clicked="Delete"/>
+        <!--<Button Text="Delete" Clicked="Delete"/>-->
         <Button Text="Previous Page" Clicked="PreviousClicked"/>
     </VerticalStackLayout>
 </ContentPage>

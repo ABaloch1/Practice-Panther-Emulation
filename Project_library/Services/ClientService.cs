@@ -26,7 +26,7 @@ namespace Project_library.Services
         private List<Client> ClientList;
         public List<Client> getclientList
         {
-            get { return ClientList; }
+            get { return ClientList ?? new List<Client>(); }
 
         }
 

@@ -26,6 +26,7 @@
                                 <ColumnDefinition Width="12*"/>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
+                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0 " Text="{Binding Path=Display}"/>
                             <Button Grid.Column="1"

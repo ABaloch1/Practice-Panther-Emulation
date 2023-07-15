@@ -21,9 +21,9 @@ namespace Project_library.Services
             ProjectList = new List<Project>();
         }
 
-        private Project? GetProject(int Id)
+        private Project? Get(int Id)
         {
-            return ProjectList.FirstOrDefault(p => p.Id == Id);
+            return Projects.FirstOrDefault(p => p.Id == Id);
         }
 
         private static ProjectService? instance;
@@ -43,16 +43,17 @@ namespace Project_library.Services
         {
             get
             {
-                return ProjectList.Any() ?  ProjectList.Select(p => p.Id).Max() : 0;
+                return Projects.Any() ? Projects.Select(p => p.Id).Max() : 0;
             }
         }
 
-        public void AddProject(Project project)
+        public void Add(Project project)
         {
             if (project.Id == 0)
             {
                 project.Id = LastId + 1;
             }
+            ProjectList.Add(project);
         }
 
     }

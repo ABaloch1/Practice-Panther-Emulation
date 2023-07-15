@@ -52,6 +52,13 @@ namespace Project.MAUI.ViewModels
             ClientService.Current.AddorUpdate(Model);
         }
 
+        //public void Add()
+        //{
+        //    ClientService.Current.Add(Model);
+        //}
+
+
+
         public string Display
         {
             get
@@ -73,17 +80,23 @@ namespace Project.MAUI.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
+        //execute commands
         public void ExecuteDelete(int id)
         {
             ClientService.Current.Delete(id);
         }
-        //exucute commands
+        
+        public void ExecuteEdit(int id)
+        {
+            Shell.Current.GoToAsync($"//ClientDetail?clientId={id}");
+        }
 
         private void SetupCommands()
         {
             DeleteCommand = new Command(
                 (c) => ExecuteDelete((c as ClientViewModel).Model.Id));
+            EditCommand = new Command(
+                (c) => ExecuteEdit((c as ClientViewModel).Model.Id));
         }
 
 
@@ -102,15 +115,5 @@ namespace Project.MAUI.ViewModels
 
 
 
-        //public void Delete()
-        //{
-        //    if (SelectedClient != null)
-        //    {
-        //        ClientService.Current.Delete(SelectedClient.Id);
-        //        SelectedClient = null;
-        //        NotifyPropertyChanged(nameof(Clients));
-        //        NotifyPropertyChanged(nameof(SelectedClient));
-        //    }
-        //}
     }
 }

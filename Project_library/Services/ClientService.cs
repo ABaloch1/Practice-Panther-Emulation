@@ -43,27 +43,20 @@ namespace Project_library.Services
             };
         }
 
-        
-        //finding client by name
-        /*
-        public List<Client> Search(string query)
-        {
-            return getclientList.Where(s => s.Name.ToUpper().Contains(query.ToUpper())).ToList();
-        }
-        */
 
         public Client? Get(int id)
         {
-            return ClientList.FirstOrDefault(s => s.Id == id);
+            return getclientList.FirstOrDefault(s => s.Id == id);
         }
 
         public void AddorUpdate(Client c) 
         {
-            if(c.Id == 0)
+            if (c.Id == 0)
             {
                 //add
                 c.Id = LastId + 1;
-                ClientList.Add(c);
+                getclientList.Add(c);
+
             }
         }
 
@@ -71,13 +64,13 @@ namespace Project_library.Services
         {
             get
             {
-                return ClientList.Any() ? ClientList.Select(c => c.Id).Max() : 0;
+                return getclientList.Any() ? getclientList.Select(c => c.Id).Max() : 0;
             }
         }
 
         public IEnumerable<Client> Search(string query)
         {
-            return ClientList.Where(c => c.Name.ToUpper().Contains(query.ToUpper()));
+            return getclientList.Where(c => c.Name.ToUpper().Contains(query.ToUpper()));
         }
 
         public void Delete(int id) 
@@ -85,7 +78,7 @@ namespace Project_library.Services
             var remove = Get(id);
             if (remove != null)
             {
-                ClientList.Remove(remove);
+                getclientList.Remove(remove);
             }
         }
 

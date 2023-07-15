@@ -5,10 +5,19 @@
              Title="ClientView"
              NavigatedTo="OnArrived">
     <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Entry Grid.Column="0"></Entry>
+            <Button Grid.Column="1" Text="Search"></Button>
+            <Button Grid.Column="2" Text="Add" Clicked="AddClicked"></Button>
+        </Grid>
         <ListView
             ItemsSource="{Binding Path = getclientList}"
-            SelectedItem="{Binding Path=  SelectedClient}"
-            >
+            SelectedItem="{Binding Path=  SelectedClient}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -16,19 +25,26 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="12*"/>
                                 <ColumnDefinition/>
+                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0 " Text="{Binding Path=Display}"/>
                             <Button Grid.Column="1"
+                                    Text="Edit"
+                                    Command="{Binding Path = EditCommand}"
+                                    CommandParameter="{Binding}"
+                                    Clicked="EditCommand"
+                                    />
+                            <Button Grid.Column="2"
                                     Text="Delete"
                                     Command="{Binding Path = DeleteCommand}"
                                     CommandParameter="{Binding}"
-                                    Clicked="DeleteClicked"/>
+                                    Clicked="DeleteClicked"
+                                        />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <!--<Button Text="Delete" Clicked="Delete"/>-->
         <Button Text="Previous Page" Clicked="PreviousClicked"/>
     </VerticalStackLayout>
 </ContentPage>

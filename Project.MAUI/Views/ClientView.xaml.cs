@@ -25,4 +25,15 @@ public partial class ClientView : ContentPage
     {
         (BindingContext as ClientViewViewModel).RefreshClientList();
     }
+
+    private void AddClicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("//ClientDetail");
+    }
+
+    private void EditCommand(object sender, EventArgs e)
+    {
+        (BindingContext as ClientViewViewModel).RefreshClientList();
+
+    }
 }

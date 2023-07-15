@@ -9,7 +9,7 @@ namespace Project_library.Models
     public class Time
     {
         public DateOnly Date { get; set; } 
-        public string Narrative { get; set; }
+        public string? Narrative { get; set; }
         public TimeOnly TimeOnly { get; set; }
 
 

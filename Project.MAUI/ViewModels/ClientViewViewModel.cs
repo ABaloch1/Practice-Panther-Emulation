@@ -48,10 +48,11 @@ namespace Project.MAUI.ViewModels
             get
             {
                 return
-                    new ObservableCollection<ClientViewModel>(
-                        ClientService.Current.Search(
-                            Query ?? string.Empty).
-                            Select(x => new ClientViewModel(x)).ToList());
+                    new ObservableCollection<ClientViewModel>
+                    //(ClientService.Current.Search(
+                    //        Query ?? string.Empty).
+                    //        Select(x => new ClientViewModel(x)).ToList());
+                    (ClientService.Current.getclientList.Select(c => new ClientViewModel(c)).ToList());
             }
         }
 

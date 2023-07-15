@@ -25,6 +25,12 @@ namespace Project_library.Models
             }
         }
 
+        public Client()
+        {
+            Name = string.Empty;
+            Projects = new List<Project>();
+        }
+
         public override string ToString()
         {
             //return base.ToString();

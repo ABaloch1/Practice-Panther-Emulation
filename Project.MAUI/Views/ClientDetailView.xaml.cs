@@ -22,6 +22,7 @@ public partial class ClientDetailView : ContentPage
     private void clientsonArival(object sender, NavigatedToEventArgs e)
     {
         BindingContext = new ClientViewModel(ClientId);
+        (BindingContext as ClientViewModel).RefreshProjects();
     }
 
     private void CancelClicked(object sender, EventArgs e)

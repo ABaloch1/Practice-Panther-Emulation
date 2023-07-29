@@ -14,6 +14,10 @@ namespace Project.MAUI.ViewModels
 {
     class ClientViewViewModel : INotifyPropertyChanged
     {
+        public Client SelectedClient { get; set; }
+        public ICommand SearchCommand { get; set; }
+        public string Query { get; set; }
+
         public ClientViewViewModel()
         {
             SearchCommand = new Command(ExecuteSearchCommand);
@@ -32,27 +36,19 @@ namespace Project.MAUI.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        
-        public Client SelectedClient { get; set; }
-        public ICommand SearchCommand { get; set; }
-        public string Query { get; set; }
 
         public void ExecuteSearchCommand()
         {
             NotifyPropertyChanged(nameof(getclientList));
         }
 
-        
         public ObservableCollection<ClientViewModel> getclientList
         {
             get
             {
                 return
                     new ObservableCollection<ClientViewModel>
-                    //(ClientService.Current.Search(
-                    //        Query ?? string.Empty).
-                    //        Select(x => new ClientViewModel(x)).ToList());
-                    (ClientService.Current.getclientList.Select(c => new ClientViewModel(c)).ToList());
+                    (ClientService.Current.Search(Query ?? string.Empty).Select(x => new ClientViewModel(x)).ToList());
             }
         }
 
@@ -65,9 +61,6 @@ namespace Project.MAUI.ViewModels
                 NotifyPropertyChanged(nameof(getclientList));
                 NotifyPropertyChanged(nameof(SelectedClient));
             }
-        }
-
-        
-       
+        }       
     }
 }

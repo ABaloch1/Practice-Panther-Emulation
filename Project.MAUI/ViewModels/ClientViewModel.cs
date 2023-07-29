@@ -15,10 +15,21 @@ namespace Project.MAUI.ViewModels
     public class ClientViewModel : INotifyPropertyChanged
     {
         public Client Model { get; set; }
-        //finish
-        //public ObservableCollection<ProjectViewModel> Projects
-        //{
-        //}
+        public ObservableCollection<ProjectViewModel> Projects
+        {
+            get
+            {
+                if (Model == null || Model.Id == 0) 
+                {
+                    return new ObservableCollection<ProjectViewModel>();
+                }
+                else
+                {
+                    return new ObservableCollection<ProjectViewModel>(ProjectService.Current.Projects.
+                        Where(p => p.ClientId == Model.Id).Select(x => new ProjectViewModel(x)));
+                }
+            }
+        }
 
         //setting up constructor
         public ClientViewModel()
@@ -57,7 +68,10 @@ namespace Project.MAUI.ViewModels
         //    ClientService.Current.Add(Model);
         //}
 
-
+        public void RefreshProjects()
+        {
+            NotifyPropertyChanged(nameof(Projects));
+        }
 
         public string Display
         {
@@ -91,29 +105,27 @@ namespace Project.MAUI.ViewModels
             Shell.Current.GoToAsync($"//ClientDetail?clientId={id}");
         }
 
+        public void ExecuteAddProject()
+        {
+            AddorUpdate();
+            //finish
+            Shell.Current.GoToAsync($"//ProjectDetail?clientId={Model.Id}");
+        }
+        public void ExecuteShowProject(int id)
+        {
+            Shell.Current.GoToAsync($"//Projects?clientId={id}");
+        }
+
         private void SetupCommands()
         {
             DeleteCommand = new Command(
                 (c) => ExecuteDelete((c as ClientViewModel).Model.Id));
             EditCommand = new Command(
                 (c) => ExecuteEdit((c as ClientViewModel).Model.Id));
+            AddProjectCommand = new Command(
+                (c) => ExecuteAddProject());
+            ShowProjectCommand = new Command(
+                (c) => ExecuteShowProject((c as ClientViewModel).Model.Id));
         }
-
-
-
-
-
-
-        //public Client SelectedClient { get; set;}
-
-        //    public ObservableCollection<Client> Clients {
-        //        get
-        //        {
-        //            return new ObservableCollection<Client>(ClientService.Current.getclientList);
-        //    }
-        //}
-
-
-
     }
 }

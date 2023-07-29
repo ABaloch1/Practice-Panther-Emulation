@@ -8,15 +8,10 @@ namespace Project_library.Models
 {
     public class Time
     {
-        public DateOnly Date { get; set; } 
-        public string? Narrative { get; set; }
-        public TimeOnly TimeOnly { get; set; }
-
-
-        //this might replace dateonly and timeonly
-        public DateTime DateTime { get; set; }
-
+      public int Id { get; set; }
         public int ProjectId { get; set; }
-        public int EmpoyeeId { get; set; }
+        public int EmployeeId { get; set; }
+        public decimal Hours { get; set; }
+        public string? Narrative { get; set; }
     }
 }

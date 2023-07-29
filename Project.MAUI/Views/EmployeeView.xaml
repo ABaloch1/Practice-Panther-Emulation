@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Project.MAUI.Views.ClientView"
-             Title="ClientView"
+             x:Class="Project.MAUI.Views.EmployeeView"
+             Title="EmployeeView"
              NavigatedTo="OnArrived">
     <VerticalStackLayout>
         <Grid>
@@ -16,8 +16,8 @@
             <Button Grid.Column="2" Text="Add" Clicked="AddClicked"></Button>
         </Grid>
         <ListView
-            ItemsSource="{Binding Path = getclientList}"
-            SelectedItem="{Binding Path=  SelectedClient}">
+            ItemsSource="{Binding Path= getemployeeList}"
+            SelectedItem="{Binding Path= SelectedEmployee}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -26,27 +26,19 @@
                                 <ColumnDefinition Width="12*"/>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <!--<ColumnDefinition/>-->
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0 " Text="{Binding Path=Display}"/>
+                            <Label Grid.Column="0" Text="{Binding Path = Display}"/>
                             <Button Grid.Column="1"
-                                    Text="Projects"
-                                    Command="{Binding Path= ShowProjectCommand}"
-                                    CommandParameter="{Binding}"
-                                    Clicked="ProjectClicked"
-                                    />
-                            <Button Grid.Column="2"
                                     Text="Edit"
-                                    Command="{Binding Path = EditCommand}"
+                                    Command="{Binding Path= EditCommand}"
                                     CommandParameter="{Binding}"
                                     Clicked="EditCommand"
                                     />
-                            <Button Grid.Column="3"
+                            <Button Grid.Column="2"
                                     Text="Delete"
-                                    Command="{Binding Path = DeleteCommand}"
+                                    Command="{Binding Path= DeleteCommand}"
                                     CommandParameter="{Binding}"
-                                    Clicked="DeleteClicked"
+                                    Clicked="DeleteCommand"   
                                     />
                         </Grid>
                     </ViewCell>

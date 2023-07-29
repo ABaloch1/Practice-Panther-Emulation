@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.MAUI.Views.ProjectView"
+             Title="ProjectView"
+             NavigatedTo="ProjecctsArriving">
+    <VerticalStackLayout>
+        <Label 
+            Text="{Binding Path=Model.Name}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Start" />
+        <ListView
+            ItemsSource="{Binding Projects}">
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

@@ -15,7 +15,7 @@ namespace Project_library.Models
         public bool IsActive { get; set; }
         public string Name { get; set; }
         public string Notes { get; set; }
-        public List<Project> Projects { get; set; }
+        public List<Projectt> Projects { get; set; }
         
         public string Display
         {
@@ -28,13 +28,13 @@ namespace Project_library.Models
         public Client()
         {
             Name = string.Empty;
-            Projects = new List<Project>();
+            Projects = new List<Projectt>();
         }
 
         public override string ToString()
         {
             //return base.ToString();
-            return $"{Id} {Name} {Notes}";
+            return $"{Id} {Name} ";
         }
         
 

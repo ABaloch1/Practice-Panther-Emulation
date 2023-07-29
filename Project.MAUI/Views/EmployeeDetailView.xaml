@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Project.MAUI.Views.ClientDetailView"
-             Title="ClientDetailView"
-    NavigatedTo="clientsonArival">
+             x:Class="Project.MAUI.Views.EmployeeDetailView"
+             Title="EmployeeDetailView"
+             NavigatedTo="EmpOnArrival">
     <VerticalStackLayout>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="11*"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"/>
@@ -17,21 +18,18 @@
             </Grid.RowDefinitions>
             <Label Grid.Column="0"
                    Grid.Row="0"
-                   Text ="Name"/>
+                   Text="Name"/>
             <Entry Grid.Column="1"
                    Grid.Row="0"
-                   Text="{Binding Path=Model.Name}"/> 
+                   Text="{Binding Path=Model.Name}"
+                   />
             <Label Grid.Column="0"
                    Grid.Row="1"
-                   Text="Notes"/>
+                   Text="Rate"/>
             <Entry Grid.Column="1"
                    Grid.Row="1"
-                   Text="{Binding Path=Model.Notes}"/>
-            <!--<Label Grid.Column="0" 
-                   Text="Notes"/>
-            <Entry Grid.Column="1" Text="{Binding Path=Model.Notes}"/>-->
+                   Text="{Binding Path=Model.Rate}"/>
         </Grid>
-        <Button Text="Confirm Client" Clicked="AddingClicked"/>
-        <Button Text="Cancel" Clicked="CancelClicked"/>
+        <Button Text="Confirm Employee" Clicked="Confirm"/>
     </VerticalStackLayout>
 </ContentPage>

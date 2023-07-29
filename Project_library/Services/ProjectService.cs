@@ -9,8 +9,8 @@ namespace Project_library.Services
 {
     public class ProjectService
     {
-        private List<Project> ProjectList;
-        public List<Project> Projects
+        private List<Projectt> ProjectList;
+        public List<Projectt> Projects
         {
             get
             { return ProjectList; }
@@ -18,10 +18,13 @@ namespace Project_library.Services
 
         private ProjectService()
         {
-            ProjectList = new List<Project>();
+            ProjectList = new List<Projectt>
+            {
+                new Projectt {Id = 1, Name ="Test" , ClientId = 1}
+            };
         }
 
-        private Project? Get(int Id)
+        private Projectt? Get(int Id)
         {
             return Projects.FirstOrDefault(p => p.Id == Id);
         }
@@ -47,7 +50,7 @@ namespace Project_library.Services
             }
         }
 
-        public void Add(Project project)
+        public void Add(Projectt project)
         {
             if (project.Id == 0)
             {

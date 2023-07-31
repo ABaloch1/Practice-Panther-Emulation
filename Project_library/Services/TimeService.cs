@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Project_library.Services
 {
-    internal class TimeService
+    public class TimeService
     {
         private static TimeService? instance;
 
         private List<Time> timeList;
 
-        public List<Time> Times
+        public List<Time> gettimeList
         {
             get { return timeList; }
         }
@@ -34,13 +34,14 @@ namespace Project_library.Services
         {
             timeList = new List<Time>()
             {
-                new Time{Id = 1, EmployeeId = 1, ProjectId = 1, Hours=1.75M, Narrative = "TEST TIME ENTRY"}
+                new Time{Id = 1, EmployeeId = 1, ProjectId = 1, Hours=1.75M, Narrative = "TEST TIME ENTRY"},
+                new Time{Id = 2, EmployeeId = 1, ProjectId = 1, Hours=1.15M, Narrative = "NEW Test TIME ENTRY"}
             };
         }
 
         public Time AddOrUpdate(Time time)
         {
-            timeList.Add(time);
+            gettimeList.Add(time);
             return time;
         }
     }

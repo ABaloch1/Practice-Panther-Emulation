@@ -28,7 +28,7 @@
                    Text="Rate"/>
             <Entry Grid.Column="1"
                    Grid.Row="1"
-                   Text="{Binding Path=Model.Rate}"/>
+                   Text="{Binding RateDisplay,Mode=TwoWay}"/>
         </Grid>
         <Button Text="Confirm Employee" Clicked="Confirm"/>
     </VerticalStackLayout>

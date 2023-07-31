@@ -35,7 +35,7 @@ namespace Project_library.Services
         {
             employeelist = new List<Employee>
             {
-                new Employee { Id = 1, Name = "Sorgalim", Rate = 100 }
+                new Employee { Id = 1, Name = "Sorgalim", Rate = 100M  }
 
             };
         }

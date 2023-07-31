@@ -12,5 +12,6 @@
         <ListView
             ItemsSource="{Binding Projects}">
         </ListView>
+        <Button Text="Cancel" Clicked="CancelClicked"/>
     </VerticalStackLayout>
 </ContentPage>

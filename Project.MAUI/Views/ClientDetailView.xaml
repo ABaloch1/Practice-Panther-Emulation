@@ -20,7 +20,7 @@
                    Text ="Name"/>
             <Entry Grid.Column="1"
                    Grid.Row="0"
-                   Text="{Binding Path=Model.Name}"/> 
+                   Text="{Binding Path=Model.Name}"/>
             <Label Grid.Column="0"
                    Grid.Row="1"
                    Text="Notes"/>

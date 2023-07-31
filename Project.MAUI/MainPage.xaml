@@ -8,7 +8,7 @@
             VerticalOptions="Center">
             <Button Text="Manage Clients &amp; Projects" Clicked="ClientClicked"></Button>
             <Button Text="Manage Employees" Clicked="EmployeeClicked"></Button>
-            <Button Text="Time Entry"></Button>
+            <Button Text="Time Entry" Clicked="TimeClicked"></Button>
 
         </VerticalStackLayout>
         

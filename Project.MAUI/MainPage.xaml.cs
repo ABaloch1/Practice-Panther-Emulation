@@ -24,6 +24,11 @@ namespace Project.MAUI
         {
             Shell.Current.GoToAsync("//getemployeeList");
         }
+
+        private void TimeClicked(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync("//gettimeList");
+        }
     }
 
     

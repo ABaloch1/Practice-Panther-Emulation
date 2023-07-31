@@ -14,11 +14,26 @@ namespace Project.MAUI.ViewModels
     public class EmployeeViewModel : INotifyPropertyChanged
     {
         public Employee Model { get; set; }
-        
+
         //public void AddorUpdate()
         //{
         //    EmployeeService.Current.AddorUpdate(Model);
         //}
+
+        public string RateDisplay
+        {
+            get
+            {
+                return Model.Rate.ToString();
+            }
+            set
+            {
+                if (decimal.TryParse(value, out decimal v))
+                {
+                    Model.Rate = v;
+                }
+            }
+        }
 
         public string Display
         {

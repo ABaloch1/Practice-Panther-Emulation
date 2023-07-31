@@ -109,6 +109,8 @@ namespace Project.MAUI.ViewModels
         {
             AddorUpdate();
             //finish
+            //prof mentioned fixing on cancel it deletes the add or something like that
+            //FIX AFTER YOU DO EVERYTHING ELSE
             Shell.Current.GoToAsync($"//ProjectDetail?clientId={Model.Id}");
         }
         public void ExecuteShowProject(int id)

@@ -24,7 +24,7 @@ namespace Project_library.Services
             };
         }
 
-        private Projectt? Get(int Id)
+        public Projectt? Get(int Id)
         {
             return Projects.FirstOrDefault(p => p.Id == Id);
         }

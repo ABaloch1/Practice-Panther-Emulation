@@ -21,7 +21,16 @@ namespace Project_library.Models
 
         public override string ToString()
         {
-            return $"{Name}";
+            return $"{Id} {Name}";
         }
+
+        public string Display
+        {
+            get
+            {
+                return ToString();
+            }
+        }
+
     }
 }

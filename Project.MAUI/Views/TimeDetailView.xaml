@@ -39,6 +39,17 @@
                 SelectedItem="{Binding Project}"
                 />
         </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <DatePicker MinimumDate="{Binding MinDate}"
+                        MaximumDate="{Binding MaxDate}"
+                        Date="{Binding SelectedDate}"
+                        />
+        </Grid>
         <Label Text="Narrative"></Label>
         <Entry Text="{Binding Model.Narrative}"></Entry>
 

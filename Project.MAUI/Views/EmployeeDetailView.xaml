@@ -30,6 +30,8 @@
                    Grid.Row="1"
                    Text="{Binding RateDisplay,Mode=TwoWay}"/>
         </Grid>
+        <!--<Button Text="Confirm employee test" Command="{Binding Path= AddorUpdateCommand}"/>-->
         <Button Text="Confirm Employee" Clicked="Confirm"/>
+        <Button Text="Cancel" Clicked="CancelClicked"/>
     </VerticalStackLayout>
 </ContentPage>

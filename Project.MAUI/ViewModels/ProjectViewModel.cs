@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Project.MAUI.ViewModels
 {
-    public class ProjectViewModel
+    public class ProjectViewModel : INotifyPropertyChanged 
     {
         public Projectt Model { get; set; }
 
@@ -20,9 +22,19 @@ namespace Project.MAUI.ViewModels
             SetupCommands();
         }
 
-        public ProjectViewModel(int clientId)
+        public ProjectViewModel(int clientId, int projectId)
         {
-            Model = new Projectt { ClientId = clientId };
+            //Model = new Projectt { ClientId = id };
+            //SetupCommands();
+            if (projectId > 0)
+            {
+                Model = ProjectService.Current.Get(projectId);
+            }
+            else
+            {
+                Model = new Projectt();
+                Model.ClientId = clientId;
+            }
             SetupCommands();
         }
 
@@ -32,14 +44,33 @@ namespace Project.MAUI.ViewModels
             SetupCommands();
         }
 
-        public ICommand AddCommand { get; private set; }
+        public ICommand AddorUpdateCommand { get; private set; }
         public ICommand TimerCommand { get; private set; }
+        public ICommand DeleteCommand { get; private set; }
+        public ICommand EditCommand { get; private set; }
 
-
-        public void SetupCommands()
+        public void ExecuteDelete(int id)
         {
-            AddCommand = new Command(ExecuteAdd);
-            TimerCommand = new Command(ExecuteTimer);
+            ProjectService.Current.Delete(id);
+        }
+
+        public void ExecuteEdit(int projectId)
+        {
+            Shell.Current.GoToAsync($"//ProjectDetail?projectId={projectId}");
+        }
+
+
+        private void SetupCommands()
+        {
+            //AddCommand = new Command(ExecuteAdd);
+            //TimerCommand = new Command(ExecuteTimer);
+            DeleteCommand = new Command(
+                (c) => ExecuteDelete((c as ProjectViewModel).Model.Id));
+            AddorUpdateCommand = new Command(
+                (p) => ExecuteAddorUpdate());
+            EditCommand = new Command(
+                (p) => ExecuteEdit((p as ProjectViewModel).Model.Id));
+
         }
         public string Display
         {
@@ -49,10 +80,10 @@ namespace Project.MAUI.ViewModels
             }
         }
 
-        private void ExecuteAdd()
+        public void ExecuteAddorUpdate()
         {
-            ProjectService.Current.Add(Model);
-            Shell.Current.GoToAsync($"//ClientDetail?clientId={Model.ClientId}");
+            ProjectService.Current.AddorUpdate(Model);
+            //Shell.Current.GoToAsync($"//ClientDetail?clientId={Model.ClientId}");
         }
 
         private void ExecuteTimer()
@@ -69,7 +100,13 @@ namespace Project.MAUI.ViewModels
             //window.Page = view;
             //Application.Current.OpenWindow(window);
         }
-
-        
+    //change handler
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+
+
+}
 }

@@ -20,7 +20,8 @@ namespace Project_library.Services
         {
             ProjectList = new List<Projectt>
             {
-                new Projectt {Id = 1, Name ="Test" , ClientId = 1}
+                new Projectt {Id = 1, Name ="Test for Client 1" , ClientId = 1},
+                new Projectt{Id = 2, Name ="Test2 for Client 2" , ClientId=2}
             };
         }
 
@@ -42,6 +43,25 @@ namespace Project_library.Services
             }
         }
 
+        public void Delete(int id)
+        {
+            var remove = Get(id);
+            if (remove != null)
+            {
+                Projects.Remove(remove);
+            }
+        }
+
+        public void Delete(Projectt pr)
+        {
+            Delete(pr.Id);
+        }
+
+        public IEnumerable<Projectt> Search(string query)
+        {
+            return Projects.Where(c => c.Name.ToUpper().Contains(query.ToUpper()));
+        }
+
         private int LastId
         {
             get
@@ -50,13 +70,13 @@ namespace Project_library.Services
             }
         }
 
-        public void Add(Projectt project)
+        public void AddorUpdate(Projectt project)
         {
             if (project.Id == 0)
             {
                 project.Id = LastId + 1;
+                ProjectList.Add(project);
             }
-            ProjectList.Add(project);
         }
 
     }

@@ -37,6 +37,6 @@ namespace Project_library.Models
             return $"{Id} {Name} ";
         }
         
-
+        //after empl get first or default emp.rate * hours
     }
 }

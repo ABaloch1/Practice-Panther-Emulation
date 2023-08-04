@@ -26,4 +26,9 @@ public partial class EmployeeDetailView : ContentPage
         (BindingContext as EmployeeViewModel).ExecuteAddorUpdate();
         Shell.Current.GoToAsync("//getemployeeList");
     }
+
+    private void CancelClicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("//getemployeeList");
+    }
 }

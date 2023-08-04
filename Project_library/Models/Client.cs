@@ -34,7 +34,7 @@ namespace Project_library.Models
         public override string ToString()
         {
             //return base.ToString();
-            return $"{Id} {Name} ";
+            return $"{Id} {Name}";
         }
         
         //after empl get first or default emp.rate * hours

@@ -44,6 +44,24 @@ namespace Project.MAUI.ViewModels
             SetupCommands();
         }
 
+        public DateTime SelectedDate { get; set; }
+        public DateTime MinDate
+        {
+            get
+            {
+                return DateTime.Today.AddDays(-30);
+            }
+        }
+
+        public DateTime MaxDate
+        {
+            get
+            {
+                return DateTime.Today.AddDays(30);
+            }
+        }
+
+        public ICommand AddBill { get; private set; }
         public ICommand AddorUpdateCommand { get; private set; }
         public ICommand TimerCommand { get; private set; }
         public ICommand DeleteCommand { get; private set; }

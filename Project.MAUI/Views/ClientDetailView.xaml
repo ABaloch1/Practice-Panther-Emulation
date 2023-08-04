@@ -14,6 +14,8 @@
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <Label Grid.Column="0"
                    Grid.Row="0"
@@ -27,9 +29,30 @@
             <Entry Grid.Column="1"
                    Grid.Row="1"
                    Text="{Binding Path=Model.Notes}"/>
-            <!--<Label Grid.Column="0" 
-                   Text="Notes"/>
-            <Entry Grid.Column="1" Text="{Binding Path=Model.Notes}"/>-->
+            <Label Grid.Column="0"
+                   Grid.Row="2"
+                   Text="Active"/>
+            <CheckBox Grid.Column="1"
+                      Grid.Row="2"
+                      IsChecked="{Binding Path=Model.IsActive}"/>
+            <Label Grid.Column="0"
+                   Grid.Row="3"
+                   Text="Open Date"/>
+            <DatePicker MinimumDate="{Binding MinDate}"
+                        MaximumDate="{Binding MaxDate}"
+                        Date="{Binding Model.OpenDate}"
+                        Grid.Row="3"
+                        Grid.Column="1"/>
+            <Label Grid.Column="0"
+                   Grid.Row="4"
+                   Text="Close  Date"/>
+            <DatePicker MinimumDate="{Binding MinDate}"
+                        MaximumDate="{Binding MaxDate}"
+                        Date="{Binding Model.ClosedDate}"
+                        Grid.Row="4"
+                        Grid.Column="1"/>
+               
+           
         </Grid>
         <Button Text="Confirm Client" Clicked="AddingClicked"/>
         <Button Text="Cancel" Clicked="CancelClicked"/>

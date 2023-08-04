@@ -37,9 +37,9 @@ namespace Project_library.Services
 
             ClientList = new List<Client>
             {
-                new Client{Id = 1, Name = "Client 1"},
-                new Client{Id = 2, Name = "Client 2"},
-                new Client{Id = 3, Name = "Client 3"}
+                new Client{Id = 1, Name = "Samad", IsActive = true},
+                new Client{Id = 2, Name = "Chris", IsActive = true},
+                new Client{Id = 3, Name = "Poopyhead", IsActive = true}
             };
         }
 

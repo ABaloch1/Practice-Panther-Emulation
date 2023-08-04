@@ -28,6 +28,7 @@ public partial class ProjectDetailView : ContentPage
 
     private void CancelClicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync($"//Projects?clientId={ClientId}");
+        var clId = (BindingContext as ProjectViewModel).Model.ClientId;
+        Shell.Current.GoToAsync($"//Projects?clientId={clId}");
     }
 }

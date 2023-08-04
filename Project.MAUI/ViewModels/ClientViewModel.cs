@@ -58,6 +58,23 @@ namespace Project.MAUI.ViewModels
             SetupCommands();
         }
 
+        public DateTime SelectedDate { get; set; }
+        public DateTime MinDate
+        {
+            get
+            {
+                return DateTime.Today.AddDays(-30);
+            }
+        }
+
+        public DateTime MaxDate
+        {
+            get
+            {
+                return DateTime.Today.AddDays(30);
+            }
+        }
+
         public void AddorUpdate()
         {
             ClientService.Current.AddorUpdate(Model);

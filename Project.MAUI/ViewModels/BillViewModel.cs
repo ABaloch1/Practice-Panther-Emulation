@@ -12,28 +12,36 @@ namespace Project.MAUI.ViewModels
     public class BillViewModel : INotifyPropertyChanged
     {
         public Bill Model { get; set; }
+        private decimal total;
+        public decimal TotalAmount
+        {
+            get
+            {
+                return total;
+            }
+            set
+            {
+                if (total != value)
+                {
+                    total = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string Display
+        {
+            get
+            {
+                return Model.ToString();
+            }
+        }
 
         public BillViewModel()
         {
             Model = new Bill();
         }
 
-        //private Employee emp;
-        //public Employee Employee
-        //{
-        //    get
-        //    {
-        //        return emp;
-        //    }
-        //    set
-        //    {
-        //        emp = value;
-        //        if (emp != null)
-        //        {
-        //            Model.EmployeeId = emp.Id;
-        //        }
-        //    }
-        //}
 
         public BillViewModel(decimal amount)
         {

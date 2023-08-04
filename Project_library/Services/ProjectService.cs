@@ -20,8 +20,8 @@ namespace Project_library.Services
         {
             ProjectList = new List<Projectt>
             {
-                new Projectt {Id = 1, Name ="Test for Client 1" , ClientId = 1},
-                new Projectt{Id = 2, Name ="Test2 for Client 2" , ClientId=2}
+                new Projectt {Id = 1, Name ="Test for Client 1" , ClientId = 1, IsActive= true},
+                new Projectt{Id = 2, Name ="Test2 for Client 2" , ClientId=2, IsActive= true}
             };
         }
 

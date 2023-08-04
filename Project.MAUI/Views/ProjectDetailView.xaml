@@ -10,10 +10,43 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="11*"/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
             <Label Grid.Column="0"
-                   Padding="10"
+                     Grid.Row="0"
                    Text="Name"/>
-            <Entry Grid.Column="1" Text="{Binding Path=Model.Name}"/>
+            <Entry Grid.Column="1" 
+                    Grid.Row="0"
+                    Text="{Binding Path=Model.Name}"/>
+            <Label Grid.Column="0"
+                   Grid.Row="1"
+                   Text="Active"/>
+            <CheckBox Grid.Column="1"
+                        Grid.Row="1"
+                        IsChecked="{Binding Path=Model.Active}"/>
+            <Label Grid.Column="0"
+                   Grid.Row="2"
+                   Text="Open Date"/>
+           <DatePicker MinimumDate="{Binding MinDate}"
+                        MaximumDate="{Binding MaxDate}"
+                        Date="{Binding Model.OpenDate}"
+                        Grid.Row="2"
+                        Grid.Column="1"/>
+            <Label Grid.Column="0"
+                   Grid.Row="3"
+                   Text="Close Date"/>
+            <DatePicker MinimumDate="{Binding MinDate}"
+                        MaximumDate="{Binding MaxDate}"
+                        Date="{Binding Model.ClosedDate}"
+                        Grid.Row="3"
+                        Grid.Column="1"/> 
+            
+
         </Grid>
         <!--<Button Text="OK" Command="{Binding AddCommand}"/>-->
         <Button Text="Confirm Project" Clicked="AddingClicked"/>

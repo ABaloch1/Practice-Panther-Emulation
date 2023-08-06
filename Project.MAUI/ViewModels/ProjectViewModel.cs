@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
 
 namespace Project.MAUI.ViewModels
 {
@@ -72,11 +73,22 @@ namespace Project.MAUI.ViewModels
             ProjectService.Current.Delete(id);
         }
 
+        public void ExecuteAddBill()
+        {
+            AddorUpdate();
+            Shell.Current.GoToAsync($"//BillDetail?projectId={Model.Id}");
+
+        }
+
+        public void AddorUpdate()
+        {
+            ProjectService.Current.AddorUpdate(Model);
+        }
+
         public void ExecuteEdit(int projectId)
         {
             Shell.Current.GoToAsync($"//ProjectDetail?projectId={projectId}");
         }
-
 
         private void SetupCommands()
         {
@@ -90,6 +102,21 @@ namespace Project.MAUI.ViewModels
                 (p) => ExecuteEdit((p as ProjectViewModel).Model.Id));
 
         }
+
+        public ObservableCollection<BillViewModel> getbillList
+        {
+            get
+            {
+                if(Model == null || Model.Id == 0)
+                {
+                    return new ObservableCollection<BillViewModel>();
+                }
+                return new ObservableCollection<BillViewModel>(BillService.Current
+                    .getbillList.Where(c => c.ProjectId == Model.Id)
+                    .Select(c => new BillViewModel(c)));
+            }
+        }
+
         public string Display
         {
             get

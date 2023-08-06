@@ -2,12 +2,15 @@ using Project.MAUI.ViewModels;
 
 namespace Project.MAUI.Views;
 
+//[QueryProperty(nameof(TimeId), "TimeId")]
+
 public partial class TimeDetailView : ContentPage
 {
 	public TimeDetailView()
 	{
 		InitializeComponent();
 	}
+    
 
     private void CancelClicked(object sender, EventArgs e)
     {
@@ -24,4 +27,6 @@ public partial class TimeDetailView : ContentPage
         (BindingContext as TimeViewModel).AddorUpdate();
         Shell.Current.GoToAsync("//gettimeList");
     }
+
+
 }

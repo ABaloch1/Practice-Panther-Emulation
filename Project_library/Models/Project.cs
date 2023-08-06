@@ -19,6 +19,8 @@ namespace Project_library.Models
         public Client? Client { get; set; }
         public string? Name { get; set; }
 
+        public List<Bill> getbillList { get; set; }
+
         public override string ToString()
         {
             return $"{Id} {Name}";

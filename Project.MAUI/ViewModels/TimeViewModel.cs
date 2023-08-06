@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Project.MAUI.ViewModels
 {
@@ -118,6 +119,14 @@ namespace Project.MAUI.ViewModels
             }
 
         }
+
+        //public ICommand AddBillCommand { get; private set; }
+
+        //private void ExecuteAddBill()
+        //{
+        //    AddorUpdate();
+        //    //Shell.Current.GoToAsync($"//BillDetail?")
+        //}
 
         public void AddorUpdate()
         {

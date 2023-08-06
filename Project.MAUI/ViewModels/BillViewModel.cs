@@ -1,11 +1,14 @@
 ﻿using Project_library.Models;
+using Project_library.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Project.MAUI.ViewModels
 {
@@ -29,6 +32,7 @@ namespace Project.MAUI.ViewModels
             }
         }
 
+
         public string Display
         {
             get
@@ -40,13 +44,35 @@ namespace Project.MAUI.ViewModels
         public BillViewModel()
         {
             Model = new Bill();
+            
         }
 
-
-        public BillViewModel(decimal amount)
+        public BillViewModel(Bill model)
         {
-            Model = new Bill() { TotalAmount = amount };
+            Model = model;
         }
+
+        public BillViewModel(int projectId, int billid)
+        {
+            if (billid > 0)
+            {
+                Model = BillService.Current.Get(billid);
+            }
+            else
+            {
+                Model = new Bill();
+                Model.ProjectId = projectId;
+            }
+        }
+
+        
+
+
+        //public BillViewModel(decimal amount)
+        //{
+        //    Model = new Bill() { TotalAmount = amount };
+
+        //}
 
 
 

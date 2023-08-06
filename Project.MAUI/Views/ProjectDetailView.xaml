@@ -48,7 +48,7 @@
             
 
         </Grid>
-        <!--<Button Text="OK" Command="{Binding AddCommand}"/>-->
+        <Button Text="Add Bill" Command="{Binding AddBillCommand}"/>
         <Button Text="Confirm Project" Clicked="AddingClicked"/>
         <Button Text="Cancel" Clicked="CancelClicked"/>
     </VerticalStackLayout>

@@ -56,4 +56,10 @@
         Title="Bill Entry"
         ContentTemplate="{DataTemplate local2:BillView}"
         Route="getbillList" />
+
+    <ShellContent
+        Title="Bill Details"
+        ContentTemplate="{DataTemplate local2:BillDetailView}"
+        Route="BillDetail" />
+
 </Shell>

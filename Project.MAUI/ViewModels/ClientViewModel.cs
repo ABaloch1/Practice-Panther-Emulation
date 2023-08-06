@@ -1,4 +1,5 @@
-﻿using Project_library.Models;
+﻿using Project_library.DTO;
+using Project_library.Models;
 using Project_library.Services;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Project.MAUI.ViewModels
 {
     public class ClientViewModel : INotifyPropertyChanged
     {
-        public Client Model { get; set; }
+        public ClientDTO Model { get; set; }
         public ObservableCollection<ProjectViewModel> Projects
         {
             get
@@ -34,11 +35,11 @@ namespace Project.MAUI.ViewModels
         //setting up constructor
         public ClientViewModel()
         {
-            Model = new Client();
+            Model = new ClientDTO();
             SetupCommands();
         }
 
-        public ClientViewModel(Client client) 
+        public ClientViewModel(ClientDTO client) 
         { 
             Model = client; 
             SetupCommands();
@@ -52,7 +53,7 @@ namespace Project.MAUI.ViewModels
             } 
             else
             {
-                Model = new Client();
+                Model = new ClientDTO();
             }
 
             SetupCommands();

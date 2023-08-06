@@ -53,6 +53,7 @@
         <Label Text="Narrative"></Label>
         <Entry Text="{Binding Model.Narrative}"></Entry>
 
+        <!--<Button Text="Bill" Command="{Binding AddBillCommand}"></Button>-->
         <Button Text="Add" Clicked="AddClicked"/>
         <Button Text="Cancel" Clicked="CancelClicked"/>
     </VerticalStackLayout>

@@ -13,17 +13,19 @@ namespace Project_library.Models
         public DateTime DueDate { get; set; }
 
         public int Id { get; set; }
+        public int ProjectId { get; set; }
+        public int EmployeeId { get; set; }
 
         public Bill()
         {
-            //TotalAmount = Employee.Rate * Employee.Hours
+            TotalAmount = 0;
             DueDate = DateTime.Today;
         }
 
 
         public override string ToString()
         {
-            return $"{Id}  {TotalAmount}  {DueDate}";
+            return $"{Id}.  {TotalAmount}  {DueDate}";
         }
     }
 }

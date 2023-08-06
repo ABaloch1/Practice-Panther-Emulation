@@ -1,4 +1,5 @@
-﻿using Project_library.Models;
+﻿using Project_library.DTO;
+using Project_library.Models;
 using Project_library.Services;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Project.MAUI.ViewModels
 {
     public class ProjectViewViewModel : INotifyPropertyChanged
     {
-        public Client Model { get; set; }
+        public ClientDTO Model { get; set; }
         public Projectt SelectedProject { get; set; }
         public string Query {get; set;}
 
@@ -49,7 +50,7 @@ namespace Project.MAUI.ViewModels
             }
             else
             {
-                Model = new Client();
+                Model = new ClientDTO();
             }
         }
 

@@ -34,17 +34,40 @@ namespace Project_library.Services
         {
             billList = new List<Bill>()
             {
-                //new Bill() {}
+                new Bill() {Id= 1, ProjectId = 1, EmployeeId = 1}
             };
         }
 
-        public Bill AddorUpdate(Bill bill)
+        public void AddorUpdate(Bill bill)
         {
+            if(bill.Id == 0)
+            {
+                bill.Id = LastId + 1;
+            }
             billList.Add(bill);
-            return bill;
         }
 
-        //delete?
-        //last id?
+        public Bill? Get(int Id)
+        {
+            return getbillList.FirstOrDefault(p => p.Id == Id);
+        }
+
+
+        public void Delete(int id)
+        {
+            var remove = Get(id);
+            if (remove != null)
+            {
+                getbillList.Remove(remove);
+            }
+        }
+
+        private int LastId
+        {
+            get
+            {
+                return getbillList.Any() ? getbillList.Select(x => x.Id).Max() : 0;
+            }
+        }
     }
 }
